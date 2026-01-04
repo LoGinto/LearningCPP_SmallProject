@@ -1,0 +1,74 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.a
+*.la
+*.lai
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+*.ilk
+*.pdb
+
+# Debug files
+*.debug
+debug/
+
+# Build directories (common ones)
+build/
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+
+# CMake
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
+_DartTestfile.cmake
+
+# Visual Studio Code
+.vscode/
+
+# VS Code specific files (optional, if you want to be extra sure)
+.cproject
+.project
+.settings/
+launch.json
+tasks.json
+
+# Other common IDEs (optional, remove if you don't use them)
+.idea/
+*.code-workspace
+
+# Miscellaneous
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+.DS_Store
+Thumbs.db
