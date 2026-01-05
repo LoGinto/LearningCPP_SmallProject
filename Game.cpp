@@ -42,7 +42,10 @@ void Game::BattleRound(){
     enemy->showStats();
 }
 void Game::start(){
-    while(player->isAlive() && enemy->isAlive()){
+    while(renderer.isOpen()&&player->isAlive() && enemy->isAlive()){
+        renderer.processEvents();
+        renderer.clear();
+        renderer.draw({100.f, 400.f}, {600.f, 300.f});
         BattleRound();
     }
     if(player->isAlive()){

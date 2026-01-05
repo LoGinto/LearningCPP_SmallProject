@@ -2,11 +2,13 @@
 #define Game_H
 
 #include "Character.h"
+#include "Renderer.h"
 
 class Game{
 private:
     Character* player;
     Character* enemy;
+    Renderer renderer;
     char coinToss();
 
 public:

@@ -14,6 +14,7 @@ private:
     sf::Sprite playerSprite;
     sf::Sprite enemySprite;
     sf::Sprite coinSprite;
+    static sf::Texture loadTexture(const std::string& path);
 
 public:
     Renderer();
