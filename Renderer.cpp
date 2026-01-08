@@ -33,10 +33,24 @@ Renderer::Renderer()
         std::cerr << "Failed to load coin tails texture!\n";
     }
 
-    // Set initial positions (using braced Vector2f, same as you wanted)
-    playerSprite.setPosition({150.f, 450.f});
-    enemySprite.setPosition({650.f, 450.f});
-    coinSprite.setPosition({450.f, 250.f});
+        // Center the origins of all sprites using SFML 3 syntax
+    playerSprite.setOrigin({playerSprite.getLocalBounds().size.x / 2.f,
+                            playerSprite.getLocalBounds().size.y / 2.f});
+    enemySprite.setOrigin({enemySprite.getLocalBounds().size.x / 2.f,
+                           enemySprite.getLocalBounds().size.y / 2.f});
+    coinSprite.setOrigin({coinSprite.getLocalBounds().size.x / 2.f,
+                          coinSprite.getLocalBounds().size.y / 2.f});
+
+    // Scales for Fear & Hunger atmosphere
+    playerSprite.setScale({0.85f, 0.85f});
+    enemySprite.setScale({1.25f, 1.25f});
+    coinSprite.setScale({0.5f, 0.5f});
+
+    // Positions - now perfectly aligned thanks to centered origins
+    playerSprite.setPosition({300.f, 450.f});   // Foreground, your preferred player spot
+    enemySprite.setPosition({400.f, 250.f});    // Back, dead center of the 800x600 window
+    coinSprite.setPosition({400.f, 300.f});     // Centered for flip animation
+    
 }
 
 bool Renderer::isOpen() const{
@@ -61,13 +75,14 @@ void Renderer::clear() {
     window.clear(sf::Color::Black);
 }
 
-void Renderer::draw(sf::Vector2f playerPosition,sf::Vector2f enemyPosition){
+void Renderer::draw(sf::Vector2f playerPosition,sf::Vector2f enemyPosition,bool drawCoin){
     playerSprite.setPosition(playerPosition);
     enemySprite.setPosition(enemyPosition);
     window.draw(playerSprite);
     window.draw(enemySprite);
-    window.draw(coinSprite);
-
+    if(drawCoin){
+        window.draw(coinSprite);
+    }
     window.display();
 }
 

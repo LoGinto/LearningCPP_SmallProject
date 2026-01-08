@@ -25,7 +25,8 @@ public:
     void clear();
     void draw(
         sf::Vector2f playerPosition,
-        sf::Vector2f enemyPosition
+        sf::Vector2f enemyPosition,
+        bool showCoin = false
     );
 
     void showCoinFlip(bool isHeads);

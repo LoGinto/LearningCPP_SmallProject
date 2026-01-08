@@ -11,6 +11,7 @@
 Game::Game(Character* p,Character* e){
     player = p;
     enemy = e;
+    showCoin = false;
 }
 char Game::coinToss(){
     return (rand()%2==0)?'H':'T';
@@ -28,7 +29,13 @@ void Game::BattleRound(){
     std::cout.flush();
     PlaySound(TEXT("coin.wav"), NULL, SND_FILENAME | SND_ASYNC);
     std::this_thread::sleep_for(std::chrono::seconds(2)); 
+    showCoin = false;
     char result = coinToss();
+    bool isHeads = (result == 'H');
+    showCoin = true;                    // Enable coin drawing
+    renderer.showCoinFlip(isHeads);
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+    showCoin = false;
     if(playerBet == result){
         std::cout << "You won this round! Enemy takes 1 damage." << std::endl;
         enemy->takeDamage(1);
@@ -45,7 +52,7 @@ void Game::start(){
     while(renderer.isOpen()&&player->isAlive() && enemy->isAlive()){
         renderer.processEvents();
         renderer.clear();
-        renderer.draw({100.f, 400.f}, {600.f, 300.f});
+        renderer.draw({300.f, 450.f}, {400.f, 250.f}, showCoin);
         BattleRound();
     }
     if(player->isAlive()){

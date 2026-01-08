@@ -9,6 +9,7 @@ private:
     Character* player;
     Character* enemy;
     Renderer renderer;
+    bool  showCoin;
     char coinToss();
 
 public:
